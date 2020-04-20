@@ -1,0 +1,97 @@
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+<title>The leo dice roller </title>
+    <style>
+        #important-button{
+            color:crimson;
+        
+        }
+        h1{
+        text-align: center;
+        }
+        body{
+            background:lightcoral;
+            text-align:center;
+            font-family: cursive;
+        }
+        #info{
+            height:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <div>
+        <h1>dice roller</h1>
+        <p>this dice roller is made by leo,<br> a frequent dnd player</p>
+        <input type="text" id="name" placeholder ="enter a modifier"></input> 
+        <button onclick="roller()" id=important-button style=height:50px;width:100px>Roll</button>
+        <form onsubmit="roller()">
+            <p>Choose your dice</p>
+            <div>
+                <input type="radio" id="contactChoice6"
+                name="contact" value="4">
+                <label for="contactChoice6">d4</label>
+
+                <input type="radio" id="contactChoice5"
+                name="contact" value="6">
+                <label for="contactChoice5">d6</label>
+
+                <input type="radio" id="contactChoice4"
+                name="contact" value="8">
+                <label for="contactChoice4">d8</label>
+
+                <input type="radio" id="contactChoice1"
+                name="contact" value="10">
+                <label for="contactChoice1">d10</label>
+
+                <input type="radio" id="contactChoice2"
+                name="contact" value="12">
+                <label for="contactChoice2">d12</label>
+
+                <input type="radio" id="contactChoice3"
+                name="contact" value="20" checked>
+                <label for="contactChoice3">d20</label>
+
+    
+            </div>
+          </form>
+        </div>
+    </div>
+   
+
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+        function roller(){
+            document.querySelector("input[name=contact]:checked")
+            var diceUsed = parseInt( document.querySelector("input[name=contact]:checked").value)
+            var generator = getRandomInt(diceUsed)
+            var modifier = parseInt( document.getElementById('name').value )
+            generator++
+            if (modifier){
+                var ogRoll = generator
+                generator += modifier
+                alert("you rolled a "+ ogRoll +"+"+modifier+"="+generator)
+            }
+            else{
+                alert("you rolled a "+generator)
+            }
+        }
+</script>
+</body>
+
+
+
+
+
+
+
+
+</html>
